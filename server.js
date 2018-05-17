@@ -58,11 +58,10 @@ app.get("/scrape", function(req, res) {
         .attr("href");
 
       // Create a new Article using the `result` object built from scraping
-      if (source && link) {
+      if (source) {
         // Insert the data in the scrapedData db
         db.gifs.insert({
-          source: source,
-          link: link
+          source: source
         },
         function(err, inserted) {
           if (err) {
@@ -84,7 +83,7 @@ app.get("/scrape", function(req, res) {
 
 // Route for getting all Articles from the db
 app.get("/div", function(req, res) {
-  console.log("db");
+  console.log();
   
   // Grab every document in the Articles collection
   db.find({})
